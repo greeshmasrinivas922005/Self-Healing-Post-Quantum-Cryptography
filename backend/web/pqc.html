@@ -1,0 +1,862 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Post-Quantum Cryptography</title>
+
+    <link rel="stylesheet"
+          href="css/pqc.css">
+
+</head>
+
+<body>
+
+    <div class="pqc-container">
+
+
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+        <header class="pqc-header">
+
+            <div class="secure-badge">
+                EDUCATIONAL SIMULATION Â· NOT FILE-VAULT CRYPTO
+            </div>
+
+            <h1>
+                Post-Quantum Cryptography
+            </h1>
+
+            <p>
+                Browser-only educational flow. The production-standard ML-KEM and ML-DSA operations for the file vault run separately in the Java backend.
+            </p>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             RECOVERY NOTICE
+        ====================================================== -->
+
+        <section class="panel recovery-panel">
+
+            <div class="panel-title">
+
+                <span>
+                    01
+                </span>
+
+                Self-Healing Recovery
+
+            </div>
+
+
+            <div class="recovery-message">
+
+                <div class="recovery-icon">
+                    âœ“
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Classical RSA Protection Replaced
+                    </h2>
+
+                    <p>
+                        A quantum vulnerability was detected.
+                        The self-healing mechanism has automatically
+                        transitioned the system toward post-quantum protection.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             ORIGINAL DATA
+        ====================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <span>
+                    02
+                </span>
+
+                Data Recovery
+
+            </div>
+
+
+            <div class="data-box">
+
+                <label>
+                    Original Message
+                </label>
+
+                <div id="originalMessage">
+                    Loading message...
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PQC ALGORITHMS
+        ====================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <span>
+                    03
+                </span>
+
+                Post-Quantum Algorithms
+
+            </div>
+
+
+            <p class="description">
+
+                This page illustrates post-quantum terminology and workflow only. Its generated values are not outputs from standardized ML-KEM or ML-DSA implementations.
+
+            </p>
+
+
+            <div class="algorithm-grid">
+
+
+                <div class="algorithm-card">
+
+                    <div class="algorithm-number">
+                        KEM
+                    </div>
+
+                    <h2>
+                        ML-KEM-768
+                    </h2>
+
+                    <p>
+                        Post-quantum key encapsulation mechanism
+                        designed to establish a shared secret
+                        resistant to quantum attacks.
+                    </p>
+
+                    <strong id="kemStatus">
+                        READY
+                    </strong>
+
+                </div>
+
+
+
+                <div class="algorithm-card">
+
+                    <div class="algorithm-number">
+                        SIGN
+                    </div>
+
+                    <h2>
+                        ML-DSA
+                    </h2>
+
+                    <p>
+                        Post-quantum digital signature mechanism
+                        used to provide authentication and
+                        integrity verification.
+                    </p>
+
+                    <strong id="dsaStatus">
+                        READY
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             KEY ENCAPSULATION
+        ====================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <span>
+                    04
+                </span>
+
+                ML-KEM-768 Key Encapsulation
+
+            </div>
+
+
+            <div class="process">
+
+
+                <div class="process-card">
+
+                    <label>
+                        Step 1
+                    </label>
+
+                    <strong>
+                        Generate PQC Keys
+                    </strong>
+
+                    <span id="kemKeyStatus">
+                        Waiting...
+                    </span>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    â†’
+                </div>
+
+
+                <div class="process-card">
+
+                    <label>
+                        Step 2
+                    </label>
+
+                    <strong>
+                        Encapsulate
+                    </strong>
+
+                    <span id="encapsulationStatus">
+                        Waiting...
+                    </span>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    â†’
+                </div>
+
+
+                <div class="process-card">
+
+                    <label>
+                        Step 3
+                    </label>
+
+                    <strong>
+                        Shared Secret
+                    </strong>
+
+                    <span id="sharedSecret">
+                        Waiting...
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button id="kemButton">
+                GENERATE PQC KEY MATERIAL
+            </button>
+
+
+            <div id="kemMessage"
+                 class="status">
+
+                ML-KEM-768 simulation is ready.
+
+            </div>
+
+
+            <!-- =================================================
+                 ML-KEM CALCULATION
+            ================================================== -->
+
+            <div class="calculation-box">
+
+                <div class="calculation-title">
+                    ML-KEM-768 Key Encapsulation Calculation
+                </div>
+
+                <div id="kemCalculation"
+                     class="calculation-main">
+
+                    Key generation and encapsulation calculations
+                    will appear here.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             ENCRYPTION
+        ====================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <span>
+                    05
+                </span>
+
+                Secure Data Encryption
+
+            </div>
+
+
+            <p class="description">
+
+                The recovered data is protected using the
+                post-quantum key material.
+
+            </p>
+
+
+            <div class="formula">
+
+                Secure Data = Encrypt(Message, Shared Secret)
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PQC ENCRYPTION CALCULATION
+            ================================================== -->
+
+            <div class="calculation-box">
+
+                <div class="calculation-title">
+
+                    PQC Secure Data Encryption Calculation
+
+                </div>
+
+
+                <div class="calculation-main">
+
+                    Message â†’ Character Codes â†’ Shared Secret
+                    â†’ Protected Data
+
+                    <br>
+                    <br>
+
+                    Encryption Process:
+
+                    <br>
+
+                    Protected Byte = Character Code XOR Shared Secret Byte
+
+                    <br>
+                    <br>
+
+                    The generated shared secret is used to transform
+                    the original message into protected data for this
+                    educational self-healing simulation.
+
+                </div>
+
+            </div>
+
+
+
+            <div class="process">
+
+
+                <div class="process-card">
+
+                    <label>
+                        Message
+                    </label>
+
+                    <strong id="encryptionInput">
+                        â€”
+                    </strong>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    â†’
+                </div>
+
+
+                <div class="process-card">
+
+                    <label>
+                        PQC Protection
+                    </label>
+
+                    <strong>
+                        ML-KEM-768
+                    </strong>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    â†’
+                </div>
+
+
+                <div class="process-card">
+
+                    <label>
+                        Protected Data
+                    </label>
+
+                    <strong id="protectedData">
+                        â€”
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button id="encryptPqcButton"
+                    disabled>
+
+                ENCRYPT WITH PQC
+
+            </button>
+
+
+            <div id="encryptionStatus"
+                 class="status">
+
+                Waiting for PQC key material...
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             DECRYPTION
+        ====================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <span>
+                    06
+                </span>
+
+                Secure Data Decryption
+
+            </div>
+
+
+            <div class="process">
+
+
+                <div class="process-card">
+
+                    <label>
+                        Protected Data
+                    </label>
+
+                    <strong id="decryptionInput">
+                        â€”
+                    </strong>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    â†’
+                </div>
+
+
+                <div class="process-card">
+
+                    <label>
+                        Shared Secret
+                    </label>
+
+                    <strong>
+                        PQC Key
+                    </strong>
+
+                </div>
+
+
+                <div class="process-arrow">
+                    â†’
+                </div>
+
+
+                <div class="process-card">
+
+                    <label>
+                        Recovered Message
+                    </label>
+
+                    <strong id="pqcRecoveredMessage">
+                        â€”
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button id="decryptPqcButton"
+                    disabled>
+
+                DECRYPT WITH PQC
+
+            </button>
+
+
+            <div id="decryptionStatus"
+                 class="status">
+
+                Waiting for protected data...
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             DIGITAL SIGNATURE
+        ====================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <span>
+                    07
+                </span>
+
+                ML-DSA Digital Signature Verification
+
+            </div>
+
+
+            <p class="description">
+
+                ML-DSA provides post-quantum digital signatures
+                to verify message authenticity and integrity.
+
+            </p>
+
+
+            <div class="signature-box">
+
+
+                <div>
+
+                    <label>
+                        Signature Status
+                    </label>
+
+                    <strong id="signatureStatus">
+                        NOT GENERATED
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Integrity Status
+                    </label>
+
+                    <strong id="integrityStatus">
+                        WAITING
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button id="signatureButton"
+                    disabled>
+
+                GENERATE & VERIFY ML-DSA SIGNATURE
+
+            </button>
+
+
+            <div id="signatureMessage"
+                 class="status">
+
+                ML-DSA verification is waiting for PQC encryption.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FINAL VERIFICATION
+        ====================================================== -->
+
+        <section class="panel final-panel">
+
+            <div class="panel-title">
+
+                <span>
+                    08
+                </span>
+
+                Final Security Verification
+
+            </div>
+
+
+            <div class="verification">
+
+
+                <div>
+
+                    <label>
+                        Original Message
+                    </label>
+
+                    <strong id="verifyOriginal">
+                        â€”
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        Recovered Message
+                    </label>
+
+                    <strong id="verifyRecovered">
+                        â€”
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div id="finalResult"
+                 class="final-result">
+
+                Waiting for complete post-quantum verification...
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SHOR VS ML-KEM DEMONSTRATION
+        ====================================================== -->
+
+        <section class="panel shor-comparison-panel">
+
+            <div class="panel-title">
+
+                <span>
+                    09
+                </span>
+
+                Shor's Algorithm vs ML-KEM-768
+
+            </div>
+
+
+            <p class="description">
+
+                This final demonstration compares the quantum attack
+                simulated against RSA with the post-quantum protection
+                provided by ML-KEM-768.
+
+            </p>
+
+
+            <div class="comparison-grid">
+
+                <div class="comparison-card rsa-comparison">
+
+                    <div class="comparison-label">
+                        CLASSICAL CRYPTOGRAPHY
+                    </div>
+
+                    <h2>
+                        RSA
+                    </h2>
+
+                    <div class="comparison-status">
+                        âœ— VULNERABLE
+                    </div>
+
+                    <p>
+                        Shor's algorithm can factor the RSA modulus
+                        into its prime factors, allowing the RSA
+                        private key to be recovered in this simulation.
+                    </p>
+
+                </div>
+
+
+                <div class="comparison-card kem-comparison">
+
+                    <div class="comparison-label">
+                        POST-QUANTUM CRYPTOGRAPHY
+                    </div>
+
+                    <h2>
+                        ML-KEM-768
+                    </h2>
+
+                    <div class="comparison-status">
+                        âœ“ RESISTANT TO THIS SHOR ATTACK
+                    </div>
+
+                    <p>
+                        Shor's integer-factorization attack used
+                        against RSA does not provide a corresponding
+                        break of ML-KEM's lattice-based construction.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="shor-demo-box">
+
+                <div class="calculation-title">
+                    Quantum Attack Demonstration
+                </div>
+
+                <div id="shorComparisonResult"
+                     class="calculation-main">
+
+                    RSA:
+                    Shor's algorithm â†’ Integer Factorization â†’ RSA Broken
+
+                    <br>
+                    <br>
+
+                    ML-KEM-768:
+                    Shor's RSA factorization attack â†’ No RSA modulus to factor
+
+                    <br>
+                    <br>
+
+                    RESULT:
+                    The self-healing transition removes the vulnerable
+                    RSA protection and replaces it with post-quantum
+                    key establishment.
+
+                </div>
+
+            </div>
+
+
+            <button id="runShorComparison">
+                RUN SHOR'S ALGORITHM AGAINST ML-KEM-768
+            </button>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SYSTEM STATUS
+        ====================================================== -->
+
+        <section class="system-status">
+
+
+            <div>
+
+                <span>
+                    PREVIOUS ALGORITHM
+                </span>
+
+                <strong>
+                    RSA
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    CURRENT PROTECTION
+                </span>
+
+                <strong id="currentProtection">
+                    PQC
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    SYSTEM STATUS
+                </span>
+
+                <strong id="systemStatus">
+                    RECOVERING
+                </strong>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+
+    <script src="js/pqc.js"></script>
+
+</body>
+
+</html>

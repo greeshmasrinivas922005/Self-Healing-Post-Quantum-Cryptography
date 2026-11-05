@@ -1,0 +1,563 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RSA Cryptography Simulation</title>
+
+    <link rel="stylesheet" href="css/rsa.css">
+</head>
+
+<body>
+
+    <div class="rsa-container">
+
+        <!-- HEADER -->
+        <header class="rsa-header">
+
+            <div class="status-badge">
+                â— NORMAL OPERATION
+            </div>
+
+            <h1>RSA Cryptography Simulation</h1>
+
+            <p>
+                Complete RSA encryption and decryption simulation
+            </p>
+
+        </header>
+
+
+        <!-- 01 INPUT DATA -->
+        <section class="panel">
+
+            <div class="panel-title">
+                <span>01</span>
+                Input Data
+            </div>
+
+            <div class="message-editor">
+                <label for="messageInput">Message to encrypt</label>
+                <textarea id="messageInput" rows="3" placeholder="Type a message, even a single character"></textarea>
+                <div class="message-editor-footer">
+                    <p>Latin-1 characters only (character values 0–255), as required by this small RSA teaching key. A one-character message is fine.</p>
+                    <span id="messageCount" aria-live="polite">0 characters</span>
+                </div>
+                <button id="useMessageButton" type="button">Use this message</button>
+                <p id="messageStatus" class="message-status" role="status">Enter a message, then select “Use this message”.</p>
+                <div class="message-preview"><strong>Current message</strong><span id="originalMessage">HELLO PQC</span></div>
+            </div>
+
+        </section>
+
+
+        <!-- 02 KEY GENERATION -->
+        <section class="panel">
+
+            <div class="panel-title">
+                <span>02</span>
+                RSA Key Generation
+            </div>
+
+            <p class="description">
+                RSA uses two prime numbers to generate a public key
+                and a private key.
+            </p>
+
+            <button id="generateKeys">
+                GENERATE RSA KEYS
+            </button>
+
+
+            <!-- RSA PARAMETERS -->
+            <div class="key-grid">
+
+                <div class="value-card">
+
+                    <label>Prime p</label>
+
+                    <div id="primeP">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <label>Prime q</label>
+
+                    <div id="primeQ">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <label>n = p Ã— q</label>
+
+                    <div id="modulusN">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <label>Ï†(n)</label>
+
+                    <div id="phiN">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <label>Public exponent (e)</label>
+
+                    <div id="publicE">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <label>Private exponent (d)</label>
+
+                    <div id="privateD">
+                        â€”
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- KEY CALCULATION DETAILS -->
+            <div class="calculation-box">
+
+                <div class="calculation-title">
+                    RSA Key Generation Calculations
+                </div>
+
+
+                <!-- CALCULATION 1 -->
+
+                <div class="calculation-step">
+
+                    <div class="calculation-label">
+                        Step 1 â€” Select Prime Numbers
+                    </div>
+
+                    <div id="calculationPrimes">
+                        p = 61 &nbsp;&nbsp;&nbsp; q = 53
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATION 2 -->
+
+                <div class="calculation-step">
+
+                    <div class="calculation-label">
+                        Step 2 â€” Calculate Modulus
+                    </div>
+
+                    <div id="calculationN">
+                        n = p Ã— q
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATION 3 -->
+
+                <div class="calculation-step">
+
+                    <div class="calculation-label">
+                        Step 3 â€” Calculate Euler's Totient
+                    </div>
+
+                    <div id="calculationPhi">
+                        Ï†(n) = (p âˆ’ 1)(q âˆ’ 1)
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATION 4 -->
+
+                <div class="calculation-step">
+
+                    <div class="calculation-label">
+                        Step 4 â€” Select Public Exponent
+                    </div>
+
+                    <div id="calculationE">
+                        e = 17
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATION 5 -->
+
+                <div class="calculation-step">
+
+                    <div class="calculation-label">
+                        Step 5 â€” Calculate Private Exponent
+                    </div>
+
+                    <div id="calculationD">
+                        d Ã— e â‰¡ 1 (mod Ï†(n))
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- KEY RESULTS -->
+
+            <div class="key-result">
+
+                <div>
+
+                    <label>Public Key</label>
+
+                    <strong id="publicKey">
+                        ( â€” , â€” )
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <label>Private Key</label>
+
+                    <strong id="privateKey">
+                        ( â€” , â€” )
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div id="keyStatus" class="status">
+                Waiting for RSA key generation...
+            </div>
+
+        </section>
+
+
+        <!-- 03 ENCRYPTION -->
+        <section class="panel">
+
+            <div class="panel-title">
+                <span>03</span>
+                RSA Encryption
+            </div>
+
+            <p class="description">
+                The original message is converted into numerical
+                form and encrypted using the RSA public key.
+            </p>
+
+            <div class="formula">
+                C = M<sup>e</sup> mod n
+            </div>
+
+
+            <div class="process">
+
+                <div>
+
+                    <label>Original Message</label>
+
+                    <div id="encryptionMessage">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    â†’
+                </div>
+
+
+                <div>
+
+                    <label>Numerical Representation</label>
+
+                    <div id="messageNumber">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    â†’
+                </div>
+
+
+                <div>
+
+                    <label>Ciphertext</label>
+
+                    <div id="ciphertext">
+                        â€”
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ENCRYPTION CALCULATION -->
+
+            <div class="calculation-box">
+
+                <div class="calculation-title">
+                    Encryption Calculation
+                </div>
+
+                <div
+                    id="encryptionCalculation"
+                    class="calculation-main"
+                >
+                    C = M<sup>e</sup> mod n
+                </div>
+
+            </div>
+
+
+            <button id="encryptButton" disabled>
+                ENCRYPT MESSAGE
+            </button>
+
+
+            <!-- CIPHERTEXT DOWNLOAD -->
+            <button
+                id="downloadCipherButton"
+                class="download-button"
+                disabled
+            >
+                DOWNLOAD CIPHERTEXT
+            </button>
+
+            <p
+                id="downloadWarning"
+                class="download-warning"
+            ></p>
+
+
+            <div id="encryptionStatus" class="status">
+                Waiting for RSA keys...
+            </div>
+
+        </section>
+
+
+        <!-- 04 DECRYPTION -->
+        <section class="panel">
+
+            <div class="panel-title">
+                <span>04</span>
+                RSA Decryption
+            </div>
+
+            <p class="description">
+                The ciphertext is decrypted using the RSA private key
+                to recover the original message.
+            </p>
+
+            <div class="formula">
+                M = C<sup>d</sup> mod n
+            </div>
+
+
+            <div class="process">
+
+                <div>
+
+                    <label>Ciphertext</label>
+
+                    <div id="decryptionCiphertext">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    â†’
+                </div>
+
+
+                <div>
+
+                    <label>Decrypted Number</label>
+
+                    <div id="decryptedNumber">
+                        â€”
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    â†’
+                </div>
+
+
+                <div>
+
+                    <label>Recovered Message</label>
+
+                    <div id="recoveredMessage">
+                        â€”
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DECRYPTION CALCULATION -->
+
+            <div class="calculation-box">
+
+                <div class="calculation-title">
+                    Decryption Calculation
+                </div>
+
+                <div
+                    id="decryptionCalculation"
+                    class="calculation-main"
+                >
+                    M = C<sup>d</sup> mod n
+                </div>
+
+            </div>
+
+
+            <button id="decryptButton" disabled>
+                DECRYPT MESSAGE
+            </button>
+
+
+            <div id="decryptionStatus" class="status">
+                Waiting for ciphertext...
+            </div>
+
+        </section>
+
+
+        <!-- 05 VERIFICATION -->
+        <section class="panel verification-panel">
+
+            <div class="panel-title">
+                <span>05</span>
+                RSA Verification
+            </div>
+
+
+            <div class="verification">
+
+                <div>
+
+                    <label>Original Message</label>
+
+                    <strong id="verifyOriginal">
+                        â€”
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <label>Recovered Message</label>
+
+                    <strong id="verifyRecovered">
+                        â€”
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div id="verificationResult" class="verification-result">
+                Waiting for decryption verification...
+            </div>
+
+        </section>
+
+
+        <!-- SYSTEM STATUS -->
+
+        <section class="system-status">
+
+            <div>
+
+                <span>
+                    CRYPTOSYSTEM
+                </span>
+
+                <strong>
+                    RSA
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    SECURITY MODE
+                </span>
+
+                <strong>
+                    CLASSICAL
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    SYSTEM STATUS
+                </span>
+
+                <strong id="systemStatus">
+                    READY
+                </strong>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="js/rsa.js"></script>
+
+</body>
+
+</html>

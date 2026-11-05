@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#153a32"><title>Dashboard · VaultIQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/vault.css">
+</head>
+<body data-vault-page="overview">
+    <header class="vault-topbar">
+        <a class="brand" href="vault.html"><span class="brand-mark">V</span><span><strong>VaultIQ</strong><small>POST-QUANTUM FILE VAULT</small></span></a>
+        <nav class="vault-nav" aria-label="Vault navigation">
+            <a href="vault.html" data-nav="overview">Overview</a><a href="files.html" data-nav="files">Files</a>
+            <a href="threat.html" data-nav="threat">Threat lab</a><a href="keys.html" data-nav="keys">Key store</a><a href="audit.html" data-nav="audit">Audit</a>
+        </nav>
+        <div class="top-actions"><a class="top-link" href="/">Message lab</a><a class="top-link" href="rsa.html">Teaching demo</a><span class="server-state" id="serverState"><i></i>CHECKING</span></div>
+    </header>
+    <main class="vault-shell">
+        <section class="unlock-surface" id="unlockPanel">
+            <div class="unlock-copy"><p class="eyebrow">ENCRYPTED LOCAL KEY STORE</p><h2 id="unlockTitle">Unlock the vault</h2><p id="unlockDescription">PQC private keys are protected by your vault passphrase. The server stays locked after restart.</p></div>
+            <form id="unlockForm" class="unlock-form"><label for="vaultPassphrase">Vault passphrase</label><div class="unlock-input-row"><input id="vaultPassphrase" name="passphrase" type="password" minlength="10" autocomplete="current-password" placeholder="At least 10 characters" required><button class="button button-dark" id="unlockButton" type="submit">Unlock</button></div><p class="notice" id="unlockNotice" role="status">The passphrase is not saved. Forgetting it makes the encrypted key bundle unrecoverable.</p></form>
+        </section>
+        <div id="vaultWorkspace" hidden>
+            <section class="vault-heading"><div><p class="eyebrow">FINAL-YEAR PROJECT Â· LOCAL SECURITY PROTOTYPE</p><h1>Vault <span>overview</span></h1><p class="intro">Current protection state, recent operations, and direct access to each security workflow.</p></div><div class="algorithm-tags"><span>ML-KEM-768</span><span>AES-256-GCM</span><span>ML-DSA-65</span></div></section>
+            <section class="status-strip" aria-label="Vault status"><div><span>VAULT STATE</span><strong id="vaultState">â€”</strong></div><div><span>ACTIVE KEY VERSION</span><strong id="keyVersion">â€”</strong></div><div><span>SECURE FILES</span><strong id="fileCount">0</strong></div><div><span>THREAT STATUS</span><strong id="threatStatus">â€”</strong></div><div><span>PQC PROVIDER</span><strong id="providerStatus">â€”</strong></div><div><span>VERIFIED RECOVERIES</span><strong id="recoveredCount">0</strong></div><div><span>ATTACK SESSIONS</span><strong id="attackCount">0</strong></div></section>
+            <section class="overview-grid">
+                <a class="overview-tile" href="files.html"><span class="tile-number">01</span><span class="tile-copy"><strong>File vault</strong><small>Upload, inspect, recover, and test file integrity</small></span><span class="tile-arrow" aria-hidden="true">&#8594;</span></a>
+                <a class="overview-tile" href="threat.html"><span class="tile-number">02</span><span class="tile-copy"><strong>Threat &amp; recovery</strong><small>Inspect the controlled RSA test and real vault migration state</small></span><span class="tile-arrow" aria-hidden="true">&#8594;</span></a>
+                <a class="overview-tile" href="keys.html"><span class="tile-number">03</span><span class="tile-copy"><strong>Key store</strong><small>Active PQC version, public parameters, passphrase settings</small></span><span class="tile-arrow" aria-hidden="true">&#8594;</span></a>
+                <a class="overview-tile" href="audit.html"><span class="tile-number">04</span><span class="tile-copy"><strong>Security audit</strong><small>Filter persistent file, integrity, threat, and recovery events</small></span><span class="tile-arrow" aria-hidden="true">&#8594;</span></a>
+            </section>
+            <section class="overview-columns">
+                <section class="surface"><div class="section-heading compact"><div><p class="eyebrow">CURRENT POSTURE</p><h2>Protection summary</h2></div><span class="pulse-dot online"></span></div><dl class="posture-list"><div><dt>Current file protection</dt><dd>AES-256-GCM + ML-KEM-768</dd></div><div><dt>Metadata signature</dt><dd>ML-DSA-65</dd></div><div><dt>Self-healing</dt><dd id="healingSummary">â€”</dd></div><div><dt>Protected files</dt><dd id="filesSummary">â€”</dd></div><div><dt>Integrity</dt><dd id="integritySummary">â€”</dd></div><div><dt>Latest security event</dt><dd id="lastEventSummary">â€”</dd></div></dl></section>
+                <section class="surface"><div class="section-heading compact"><div><p class="eyebrow">RECENT ACTIVITY</p><h2>Latest audit events</h2></div><a class="text-link" href="audit.html">View all</a></div><ol class="audit-list" id="recentEvents"><li class="empty-row">No events recorded.</li></ol></section>
+            </section>
+            <details class="surface final-security-card" id="finalSecurityPanel"><summary>Final VaultIQ security summary</summary><dl class="key-summary" id="finalSecuritySummary"></dl></details><section class="notice-surface"><strong>What is real here</strong><p>File hashing, AES-GCM encryption, ML-KEM key establishment, ML-DSA signatures, persistent audit records, rotation, and file migration execute in the Java backend. The RSA/Shor page remains a toy educational simulation and does not detect live quantum threats.</p></section>
+        </div>
+        <footer class="vault-footer"><span>JDK-native standardized ML-KEM and ML-DSA Â· Loopback by default · mTLS lab optional</span><span>RSA / Shor / PQC teaching pages preserved separately</span></footer>
+    </main>
+    <script src="js/vault-common.js"></script><script src="js/vault.js"></script>
+</body>
+</html>

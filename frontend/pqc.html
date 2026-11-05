@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#153a32">
+    <title>PQC Operations Â· VaultIQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/vault.css">
+</head>
+<body data-vault-page="pqc">
+    <header class="vault-topbar">
+        <a class="brand" href="vault.html"><span class="brand-mark">V</span><span><strong>VaultIQ</strong><small>POST-QUANTUM FILE VAULT</small></span></a>
+        <nav class="vault-nav" aria-label="Vault navigation"></nav>
+        <div class="top-actions"><span class="server-state" id="serverState"><i></i>CHECKING</span></div>
+    </header>
+    <main class="vault-shell">
+        <section class="unlock-surface" id="unlockPanel">
+            <div class="unlock-copy"><p class="eyebrow">AUTHENTICATED PQC OPERATIONS</p><h2 id="unlockTitle">Sign in to VaultIQ</h2><p id="unlockDescription">Run actual JDK ML-KEM and ML-DSA operations using the active vault keys.</p></div>
+            <form id="unlockForm" class="unlock-form"><label for="vaultPassphrase">Account password</label><div class="unlock-input-row"><input id="vaultPassphrase" type="password" minlength="12" required><button class="button button-dark" id="unlockButton" type="submit">Sign in</button></div><p class="notice" id="unlockNotice" role="status"></p></form>
+        </section>
+        <div id="vaultWorkspace" hidden>
+            <section class="vault-heading"><div><p class="eyebrow">REAL STANDARD LIBRARY OPERATIONS</p><h1>Post-quantum <span>protection</span></h1><p class="intro">Exercise the active JDK ML-KEM key and ML-DSA signing key. Secret material stays in the backend.</p></div><span class="verified-tag" id="viewState">ACTIVE KEY</span></section>
+            <section class="surface workflow-card">
+                <div class="section-heading"><div><p class="eyebrow">KEY VERSION <span id="pqcVersion">â€”</span></p><h2>ML-KEM-768 Â· Key establishment</h2></div><span class="step-tag" id="kemProvider">JDK PROVIDER</span></div>
+                <div class="workflow-row"><b>Active public key fingerprint</b><code id="kemFingerprint">Load key status</code></div>
+                <p class="section-copy">The backend encapsulates to the active public key, decapsulates with its protected private key, and compares the resulting secrets. Only the shared-secret fingerprint is displayed.</p>
+                <div class="section-heading"><div><p class="eyebrow">REAL OPERATION</p><h2>ML-DSA-65 Â· Metadata signature</h2></div><span class="step-tag" id="dsaProvider">JDK PROVIDER</span></div>
+                <div class="workflow-row"><b>Signing public key fingerprint</b><code id="dsaFingerprint">Load key status</code></div>
+                <p class="section-copy">A canonical test metadata record is signed by the active ML-DSA private key, then verified with its public key.</p>
+                <button class="button button-primary" id="runPqcTest" type="button">Run real PQC operations</button>
+                <p class="notice" id="pqcNotice" role="status">No self-test operation has run in this session.</p>
+                <div id="pqcResults" class="detail-grid" hidden></div>
+            </section>
+        </div>
+        <footer class="vault-footer"><span>REAL JDK ML-KEM-768 Â· ML-DSA-65</span><span>Secret keys and shared secrets are never displayed</span></footer>
+    </main>
+    <script src="js/vault-common.js"></script>
+    <script src="js/pqc-real.js"></script>
+<a class="ai-fab" href="assistant.html" aria-label="Open VaultIQ assistant"><span class="ai-fab-mark" aria-hidden="true">&#10022;</span><span>Ask VaultAI</span></a>
+</body>
+</html>

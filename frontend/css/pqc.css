@@ -1,0 +1,600 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080d1a;
+    color: #f5f7ff;
+    min-height: 100vh;
+    padding: 30px 20px;
+}
+
+.pqc-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* HEADER */
+
+.pqc-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.secure-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #102b20;
+    color: #55e39a;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+.pqc-header h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.pqc-header p {
+    color: #9ca7bd;
+    font-size: 16px;
+}
+
+/* PANELS */
+
+.panel {
+    background: #111827;
+    border: 1px solid #27334a;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 22px;
+}
+
+.panel-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.panel-title span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #26345c;
+    color: #8fa5ff;
+    font-size: 14px;
+}
+
+.description {
+    color: #9ca7bd;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+/* RECOVERY */
+
+.recovery-panel {
+    border-color: #24553f;
+}
+
+.recovery-message {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #0a1120;
+    border: 1px solid #27334a;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.recovery-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #123526;
+    color: #55e39a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.recovery-message h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.recovery-message p {
+    color: #9ca7bd;
+    line-height: 1.5;
+}
+
+/* SELF-HEALING STATUS */
+
+.recovery-panel::after {
+    content: "SELF-HEALING SECURITY RESPONSE ACTIVE";
+    display: block;
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: #0d241a;
+    border: 1px solid #24553f;
+    border-radius: 8px;
+    color: #55e39a;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+    text-align: center;
+}
+
+/* LABEL */
+
+label {
+    display: block;
+    color: #9ca7bd;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* DATA */
+
+.data-box {
+    background: #0a1120;
+    border: 1px solid #27334a;
+    border-radius: 10px;
+    padding: 17px;
+}
+
+#originalMessage {
+    font-size: 17px;
+    word-break: break-word;
+}
+
+/* ALGORITHMS */
+
+.algorithm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.algorithm-card {
+    background: #0a1120;
+    border: 1px solid #27334a;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.algorithm-number {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #26345c;
+    color: #9fb0ff;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+
+.algorithm-card h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.algorithm-card p {
+    color: #9ca7bd;
+    line-height: 1.55;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.algorithm-card strong {
+    color: #55e39a;
+    font-size: 13px;
+}
+
+/* PROCESS */
+
+.process {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.process-card {
+    min-width: 0;
+    min-height: 105px;
+    background: #0a1120;
+    border: 1px solid #27334a;
+    border-radius: 10px;
+    padding: 17px;
+}
+
+.process-card strong {
+    display: block;
+    font-size: 15px;
+    word-break: break-word;
+    margin-bottom: 10px;
+}
+
+.process-card span {
+    display: block;
+    color: #55e39a;
+    font-size: 13px;
+    word-break: break-word;
+}
+
+.process-arrow {
+    color: #71809e;
+    font-size: 25px;
+}
+
+/* FORMULA */
+
+.formula {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 12px 18px;
+    background: #1a2340;
+    border-radius: 8px;
+    color: #9fb0ff;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+/* ML-KEM CALCULATION */
+
+.calculation-box {
+    margin-top: 20px;
+    margin-bottom: 22px;
+    padding: 20px;
+    background: #0a1120;
+    border: 1px solid #34466b;
+    border-left: 4px solid #506cf5;
+    border-radius: 10px;
+}
+
+.calculation-title {
+    margin-bottom: 14px;
+    color: #9fb0ff;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+}
+
+.calculation-main {
+    padding: 15px;
+    background: #080d1a;
+    border: 1px solid #27334a;
+    border-radius: 8px;
+    color: #b8c4dd;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    word-break: break-word;
+}
+
+/* BUTTON */
+
+button {
+    border: none;
+    border-radius: 9px;
+    padding: 13px 22px;
+    background: #506cf5;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #405bd5;
+}
+
+button:disabled {
+    background: #30394d;
+    color: #727d93;
+    cursor: not-allowed;
+}
+
+/* STATUS */
+
+.status {
+    margin-top: 18px;
+    padding: 13px 15px;
+    border-radius: 8px;
+    background: #171f31;
+    color: #9ca7bd;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* SIGNATURE */
+
+.signature-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.signature-box > div {
+    background: #0a1120;
+    border: 1px solid #27334a;
+    border-radius: 10px;
+    padding: 17px;
+}
+
+.signature-box strong {
+    font-size: 15px;
+}
+
+/* FINAL VERIFICATION */
+
+.final-panel {
+    border-color: #24553f;
+}
+
+.verification {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.verification > div {
+    background: #0a1120;
+    border: 1px solid #27334a;
+    border-radius: 10px;
+    padding: 17px;
+}
+
+.verification strong {
+    word-break: break-word;
+}
+
+.final-result {
+    margin-top: 18px;
+    padding: 17px;
+    border-radius: 10px;
+    background: #172031;
+    color: #aab4c8;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* SYSTEM STATUS */
+
+.system-status {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.system-status > div {
+    background: #111827;
+    border: 1px solid #27334a;
+    border-radius: 12px;
+    padding: 17px;
+    text-align: center;
+}
+
+.system-status span {
+    display: block;
+    color: #78849b;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+}
+
+.system-status strong {
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   SHOR VS ML-KEM DEMONSTRATION
+   ============================================================ */
+
+.shor-comparison-panel {
+    border-color: #506cf5;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 20px;
+    margin-bottom: 22px;
+}
+
+.comparison-card {
+    background: #0a1120;
+    border: 1px solid #27334a;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.rsa-comparison {
+    border-left: 4px solid #ff5252;
+}
+
+.kem-comparison {
+    border-left: 4px solid #2ecc71;
+}
+
+.comparison-label {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #26345c;
+    color: #9fb0ff;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.comparison-card h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.comparison-status {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 13px;
+    background: #172031;
+    color: #ffffff;
+}
+
+.rsa-comparison .comparison-status {
+    background: #341515;
+    color: #ff7b7b;
+}
+
+.kem-comparison .comparison-status {
+    background: #123526;
+    color: #55e39a;
+}
+
+.comparison-card p {
+    color: #9ca7bd;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.shor-demo-box {
+    margin-top: 24px;
+    padding: 20px;
+    background: #0a1120;
+    border: 1px solid #34466b;
+    border-radius: 10px;
+}
+
+.attack-process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.attack-step {
+    background: #111827;
+    border: 1px solid #27334a;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.attack-step span {
+    display: block;
+    color: #78849b;
+    font-size: 11px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.attack-step strong {
+    display: block;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.attack-failed {
+    color: #55e39a;
+}
+
+.attack-success {
+    color: #ff7b7b;
+}
+
+#runShorComparison {
+    margin-top: 22px;
+    width: 100%;
+}
+
+#shorComparisonResult {
+    margin-top: 18px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+    .algorithm-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process {
+        grid-template-columns: 1fr;
+    }
+
+    .process-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+    }
+
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .attack-process {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px 12px;
+    }
+
+    .pqc-header h1 {
+        font-size: 28px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    .recovery-message {
+        align-items: flex-start;
+    }
+
+    .signature-box,
+    .verification,
+    .system-status {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .attack-process {
+        grid-template-columns: 1fr;
+    }
+}

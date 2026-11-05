@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#17152f">
+    <title>VaultAI · VaultIQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/vault.css">
+</head>
+<body data-vault-page="assistant">
+    <header class="vault-topbar">
+        <a class="brand" href="vault.html"><span class="brand-mark">V</span><span><strong>VaultIQ</strong><small>POST-QUANTUM FILE VAULT</small></span></a>
+        <nav class="vault-nav" aria-label="Vault navigation"></nav>
+        <div class="top-actions"><span class="server-state" id="serverState"><i></i>CHECKING</span></div>
+    </header>
+
+    <main class="vault-shell assistant-page">
+        <section class="unlock-surface" id="unlockPanel">
+            <div class="unlock-copy"><p class="eyebrow">YOUR PRIVATE AI WORKSPACE</p><h2 id="unlockTitle">Sign in to VaultAI</h2><p id="unlockDescription">Ask questions with live, sanitized vault context. VaultAI never receives file contents or private keys.</p></div>
+            <form class="unlock-form" id="unlockForm">
+                <label for="vaultPassphrase">Account password</label>
+                <div class="unlock-input-row"><input id="vaultPassphrase" type="password" minlength="12" required><button class="button button-dark" id="unlockButton" type="submit">Sign in</button></div>
+                <p class="notice" id="unlockNotice" role="status"></p>
+            </form>
+        </section>
+
+        <div id="vaultWorkspace" hidden>
+            <section class="vault-heading assistant-heading">
+                <div><p class="eyebrow">YOUR AI SECURITY WORKSPACE</p><h1>Meet <span>VaultAI</span></h1><p class="intro">Ask open-ended questions, explore complex ideas, and get explanations grounded in your project’s current vault state.</p></div>
+                <span class="verified-tag assistant-provider" id="assistantProvider">LOCAL MODE · PROJECT ANSWERS</span>
+            </section>
+
+            <section class="ai-insights" aria-label="AI security insights">
+                <article class="surface ai-insight"><span class="ai-insight-icon">01</span><div><small>LIVE POSTURE</small><strong id="aiPosture">Analyzing vault…</strong><p id="aiPostureDetail">Insights are computed from backend state.</p></div></article>
+                <article class="surface ai-insight"><span class="ai-insight-icon">02</span><div><small>RECOMMENDED NEXT STEP</small><strong id="aiRecommendation">Checking configuration…</strong><p id="aiRecommendationDetail">VaultAI gives guidance; it does not change vault data.</p></div></article>
+            </section>
+
+            <section class="assistant-layout">
+                <section class="surface assistant-chat">
+                    <div class="assistant-chat-heading">
+                        <div class="assistant-title-lockup"><span class="assistant-avatar" aria-hidden="true">✦</span><div><p class="eyebrow">CONVERSATION</p><h2>What would you like to explore?</h2></div></div>
+                        <button class="button button-outline" id="clearChat" type="button">Clear chat</button>
+                    </div>
+                    <div class="conversation" id="conversation" aria-live="polite">
+                        <article class="assistant-message"><b>VaultAI</b><p>Ask a detailed question, request a step-by-step explanation, compare concepts, or ask me to help prepare a project presentation. I can use the current vault context for project-specific facts.</p></article>
+                    </div>
+                    <div class="suggested-questions" aria-label="Example questions">
+                        <button type="button">Explain this project for my viva</button>
+                        <button type="button">Compare ML-KEM and ML-DSA with examples</button>
+                        <button type="button">Help me make a presentation outline</button>
+                        <button type="button">Summarize the latest vault events</button>
+                    </div>
+                    <form class="assistant-input" id="assistantForm">
+                        <label for="assistantQuestion">Ask VaultAI anything</label>
+                        <textarea id="assistantQuestion" maxlength="8000" placeholder="Ask about anything: explain a concept, draft or revise text, plan a task, solve a problem, or discuss your VaultIQ project…" required></textarea>
+                        <div class="ai-compose-footer"><span>With provider mode, your prompt and recent chat are sent to the configured AI provider. Vault file data and keys are excluded from automatic context; avoid pasting secrets.</span><button class="button button-primary" type="submit">Send <span aria-hidden="true">→</span></button></div>
+                        <p class="notice" id="assistantNotice" role="status">For broad open-ended answers, configure OPENAI_API_KEY on the computer running the Java server. Without it, VaultAI uses a limited local project and security knowledge base.</p>
+                    </form>
+                </section>
+
+                <aside class="surface context-panel">
+                    <div class="section-heading"><div><p class="eyebrow">LIVE PROJECT CONTEXT</p><h2>Vault snapshot</h2></div><button class="icon-button" id="refreshContext" type="button" aria-label="Refresh context">↻</button></div>
+                    <dl class="key-summary" id="contextSummary"><div><dt>Loading</dt><dd>—</dd></div></dl>
+                    <h3>Protected files</h3><ul class="context-files" id="contextFiles"><li>Loading current file list…</li></ul>
+                    <h3>Recent security events</h3><ol class="audit-list" id="contextEvents"></ol>
+                    <p class="context-boundary">VaultAI’s guidance is advisory. The Java backend performs the cryptographic checks and controls all vault operations.</p>
+                </aside>
+            </section>
+        </div>
+
+        <footer class="vault-footer"><span>VaultAI · AI-assisted security learning</span><span>Vault actions always remain under your control</span></footer>
+    </main>
+    <script src="js/vault-common.js"></script>
+    <script src="js/assistant.js"></script>
+</body>
+</html>

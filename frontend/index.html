@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#153a32">
+    <title>PQC Recovery Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/visual-refresh.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="/" aria-label="PQC Recovery Lab home">
+            <span class="brand-mark" aria-hidden="true">V</span>
+            <span><strong>PQC</strong><small>RECOVERY LAB</small></span>
+        </a>
+        <div class="topbar-right">
+            <a class="vault-link assistant-nav-link" href="assistant.html">VaultAI <span aria-hidden="true">&#10022;</span></a>
+            <a class="vault-link" href="vault.html">Secure file vault <span aria-hidden="true">&#8599;</span></a>
+            <span class="environment-label">LOCAL DEMONSTRATION</span>
+            <span class="server-state" id="serverStatus" role="status"><i></i>CONNECTING</span>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <section class="page-heading">
+            <div>
+                <p class="eyebrow">POST-QUANTUM SECURITY WORKBENCH</p>
+                <h1>Message protection <span>&amp; recovery</span></h1>
+                <p class="heading-copy">Run a real key encapsulation, verify a signature, then test key rotation.</p>
+            </div>
+            <div class="algorithm-strip" aria-label="Active algorithms">
+                <span><i class="dot dot-green"></i>ML-KEM-768</span>
+                <span><i class="dot dot-orange"></i>ML-DSA-65</span>
+                <span><i class="dot dot-blue"></i>AES-256-GCM</span>
+            </div>
+        </section>
+
+        <section class="assistant-home-card" aria-labelledby="assistantHomeTitle">
+            <div class="assistant-home-mark" aria-hidden="true">✦</div>
+            <div class="assistant-home-copy">
+                <p class="eyebrow">VAULTIQ ASSISTANT</p>
+                <h2 id="assistantHomeTitle">A clearer way through complex security questions</h2>
+                <p>Explore cryptography, understand the project, or ask about the vault’s recorded state. Open VaultAI for the full conversation and live context.</p>
+            </div>
+            <a class="button button-primary assistant-home-action" href="assistant.html">Open VaultAI <span aria-hidden="true">&#8594;</span></a>
+        </section>
+
+        <nav class="tabs" role="tablist" aria-label="Lab sections">
+            <button class="tab is-active" type="button" role="tab" id="tab-secure" aria-selected="true" aria-controls="panel-secure" data-tab="secure">01 <span>Protect message</span></button>
+            <button class="tab" type="button" role="tab" id="tab-recovery" aria-selected="false" aria-controls="panel-recovery" data-tab="recovery">02 <span>Recovery drill</span></button>
+            <button class="tab" type="button" role="tab" id="tab-benchmarks" aria-selected="false" aria-controls="panel-benchmarks" data-tab="benchmarks">03 <span>Benchmarks</span></button>
+        </nav>
+
+        <section class="workspace" id="panel-secure" role="tabpanel" aria-labelledby="tab-secure" data-panel="secure">
+            <div class="work-column">
+                <section class="surface compose-surface">
+                    <div class="section-heading">
+                        <div><p class="eyebrow">MESSAGE INPUT</p><h2>Protect a message</h2></div>
+                        <span class="step-mark">01 / 03</span>
+                    </div>
+                    <form id="protectForm">
+                        <label for="message">Plaintext</label>
+                        <textarea id="message" name="message" maxlength="16000" placeholder="Type a message to protect..." required></textarea>
+                        <div class="input-meta"><span>Kept in memory only while this server is running.</span><span id="characterCount">0 / 16,000</span></div>
+                        <button class="button button-primary" id="protectButton" type="submit"><span>Protect message</span><span aria-hidden="true">&#8594;</span></button>
+                    </form>
+                    <p class="notice" id="protectNotice" role="status">Ready. Your message is sent to the local Java server for processing.</p>
+                </section>
+
+                <section class="surface package-surface" id="packagePanel" hidden>
+                    <div class="section-heading">
+                        <div><p class="eyebrow">ENCRYPTED PACKAGE</p><h2>Protection complete</h2></div>
+                        <span class="success-label"><i class="dot dot-green"></i>AUTHENTICATED</span>
+                    </div>
+                    <dl class="package-meta">
+                        <div><dt>Record</dt><dd id="packageId" class="mono">â€”</dd></div>
+                        <div><dt>Key version</dt><dd id="packageVersion" class="mono">â€”</dd></div>
+                        <div><dt>Operation time</dt><dd id="operationTime" class="mono">â€”</dd></div>
+                    </dl>
+                    <details class="artifact-details">
+                        <summary>Inspect public artifacts</summary>
+                        <div class="artifact-row"><span>KEM encapsulation</span><code id="encapsulation"></code></div>
+                        <div class="artifact-row"><span>Encrypted message + GCM tag</span><code id="ciphertext"></code></div>
+                        <div class="artifact-row"><span>ML-DSA signature size</span><code id="signatureSize"></code></div>
+                    </details>
+                </section>
+            </div>
+
+            <aside class="side-column">
+                <section class="surface flow-surface">
+                    <div class="section-heading compact"><div><p class="eyebrow">CRYPTOGRAPHIC FLOW</p><h2>What ran</h2></div></div>
+                    <ol class="flow-list">
+                        <li><span class="flow-index">1</span><div><strong>Encapsulate</strong><small>ML-KEM-768 establishes a shared secret.</small></div></li>
+                        <li><span class="flow-index">2</span><div><strong>Encrypt</strong><small>AES-256-GCM protects the message and detects tampering.</small></div></li>
+                        <li><span class="flow-index">3</span><div><strong>Sign</strong><small>ML-DSA-65 signs the original message.</small></div></li>
+                    </ol>
+                    <p class="side-footnote" id="serverDetail">Checking the Java cryptography providers...</p>
+                </section>
+                <section class="surface events-surface">
+                    <div class="section-heading compact"><div><p class="eyebrow">ACTIVITY</p><h2>Audit trail</h2></div><span class="event-count" id="eventCount">0</span></div>
+                    <ol class="event-list" id="eventList"><li class="event-empty">No operations yet.</li></ol>
+                </section>
+            </aside>
+        </section>
+
+        <section class="workspace" id="panel-recovery" role="tabpanel" aria-labelledby="tab-recovery" data-panel="recovery" hidden>
+            <div class="work-column">
+                <section class="surface recovery-surface">
+                    <div class="section-heading">
+                        <div><p class="eyebrow">CONTROLLED FAULT INJECTION</p><h2>Verify and recover</h2></div>
+                        <span class="step-mark">02 / 03</span>
+                    </div>
+                    <p class="section-copy">A drill explicitly requests a fresh ML-KEM key and re-encrypts the recovered message. This demonstrates recovery policy; it does not detect real quantum attacks.</p>
+                    <div class="active-record"><span>Active package</span><strong id="activeRecord">Protect a message first.</strong><span>Key version <b id="activeVersion">â€”</b></span></div>
+                    <div class="button-row">
+                        <button class="button button-secondary" id="verifyButton" type="button" disabled>Verify &amp; restore</button>
+                        <button class="button button-secondary" id="tamperButton" type="button" disabled>Simulate ciphertext tampering</button>
+                        <button class="button button-warning" id="rotateButton" type="button" disabled><span aria-hidden="true">&#8635;</span> Simulate incident &amp; rotate</button>
+                    </div>
+                    <p class="notice" id="recoveryNotice" role="status">Protect a message to enable recovery checks.</p>
+                </section>
+                <section class="surface recovered-surface" id="recoveredPanel" hidden>
+                    <div class="section-heading compact"><div><p class="eyebrow">RECOVERED PLAINTEXT</p><h2>Integrity check passed</h2></div><span class="success-label" id="signatureResult">SIGNATURE VALID</span></div>
+                    <pre class="recovered-message" id="recoveredMessage"></pre>
+                    <p class="rotation-result" id="rotationResult"></p>
+                </section>
+            </div>
+            <aside class="side-column">
+                <section class="surface policy-surface">
+                    <div class="section-heading compact"><div><p class="eyebrow">RECOVERY POLICY</p><h2>Safe sequence</h2></div></div>
+                    <ol class="policy-list">
+                        <li><span>01</span><p>Decapsulate the current ML-KEM package.</p></li>
+                        <li><span>02</span><p>Authenticate and decrypt with AES-GCM.</p></li>
+                        <li><span>03</span><p>Verify the ML-DSA signature before restoring.</p></li>
+                        <li><span>04</span><p>On drill, issue a new KEM key and re-encrypt.</p></li>
+                    </ol>
+                    <p class="side-footnote">Private keys are not sent to the browser. Demo packages and keys are held in server memory and expire when the process stops.</p>
+                </section>
+            </aside>
+        </section>
+
+        <section class="workspace" id="panel-benchmarks" role="tabpanel" aria-labelledby="tab-benchmarks" data-panel="benchmarks" hidden>
+            <div class="work-column">
+                <section class="surface benchmark-surface">
+                    <div class="section-heading">
+                        <div><p class="eyebrow">LOCAL MEASUREMENTS</p><h2>Compare operation cost</h2></div>
+                        <span class="step-mark">03 / 03</span>
+                    </div>
+                    <p class="section-copy">Runs three rounds on this machine. RSA is shown as a classical baseline; measurements are illustrative, not a security ranking.</p>
+                    <button class="button button-primary" id="benchmarkButton" type="button"><span>Run benchmark</span><span aria-hidden="true">&#8594;</span></button>
+                    <p class="notice" id="benchmarkNotice" role="status">No benchmark has been run.</p>
+                    <div class="benchmark-results" id="benchmarkResults" hidden>
+                        <div class="metric-row"><div><strong>ML-KEM-768</strong><small>Key generation + encapsulate + decapsulate</small></div><div class="metric-track"><i id="kemBar"></i></div><code id="kemMetric">â€”</code></div>
+                        <div class="metric-row"><div><strong>ML-DSA-65</strong><small>Key generation + sign + verify</small></div><div class="metric-track"><i id="dsaBar"></i></div><code id="dsaMetric">â€”</code></div>
+                        <div class="metric-row"><div><strong>RSA-2048</strong><small>Key generation + OAEP encrypt/decrypt</small></div><div class="metric-track"><i id="rsaBar"></i></div><code id="rsaMetric">â€”</code></div>
+                        <div class="size-strip"><span>ML-KEM public key <b id="kemPublicSize">â€”</b></span><span>KEM encapsulation <b id="kemEncapSize">â€”</b></span><span>ML-DSA signature <b id="dsaSignatureSize">â€”</b></span><span>RSA public key <b id="rsaPublicSize">â€”</b></span></div>
+                    </div>
+                </section>
+            </div>
+            <aside class="side-column">
+                <section class="surface methodology-surface">
+                    <div class="section-heading compact"><div><p class="eyebrow">METHODOLOGY</p><h2>How to read it</h2></div></div>
+                    <p>Each value is the average elapsed time per complete operation group over three rounds. Results vary with processor load, JDK version, and hardware.</p>
+                    <p>For a report, repeat the experiment, record the machine and JDK, and compare distributions rather than treating one run as a universal result.</p>
+                </section>
+            </aside>
+        </section>
+
+        <footer class="app-footer"><span>Educational prototype Â· Not for production secrets</span><span id="footerJava">JDK provider status pending</span></footer>
+    </main>
+    <script src="js/index.js"></script>
+    <a class="ai-fab" href="assistant.html" aria-label="Open VaultIQ assistant"><span class="ai-fab-mark" aria-hidden="true">&#10022;</span><span>Ask VaultAI</span></a>
+</body>
+</html>

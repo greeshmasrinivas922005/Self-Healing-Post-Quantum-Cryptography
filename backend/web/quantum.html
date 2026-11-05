@@ -1,0 +1,649 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shor's Algorithm - Quantum Attack Simulation</title>
+
+    <link rel="stylesheet" href="css/quantum.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ==================================================
+             HEADER
+             ================================================== -->
+
+        <div class="page-header">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <div>
+                <h1>Shor's Algorithm</h1>
+
+                <p class="subtitle">
+                    Quantum Attack Simulation Against RSA
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             INTRODUCTION
+             ================================================== -->
+
+        <section class="card introduction">
+
+            <h2>Quantum Threat Analysis</h2>
+
+            <p>
+                Shor's Algorithm is a quantum algorithm capable of
+                efficiently finding the prime factors of large integers.
+                Since RSA security depends on the difficulty of integer
+                factorization, a sufficiently powerful quantum computer
+                could break RSA.
+            </p>
+
+            <!-- SELF-HEALING TRIGGER NOTICE -->
+
+            <div class="self-healing-trigger">
+
+                <div class="self-healing-title">
+                    SELF-HEALING SECURITY RESPONSE
+                </div>
+
+                <p>
+                    If an attempt is made to access or download the RSA
+                    ciphertext, the system detects the suspicious access
+                    and automatically initiates quantum threat analysis.
+                </p>
+
+                <div
+                    id="ciphertextTriggerStatus"
+                    class="trigger-status"
+                >
+                    Monitoring RSA ciphertext access...
+                </div>
+
+            </div>
+
+
+            <div class="warning-box">
+
+                <div class="warning-title">
+                    âš  QUANTUM THREAT DETECTED
+                </div>
+
+                <p>
+                    This interface demonstrates the mathematical
+                    principle of Shor's Algorithm using a small RSA
+                    modulus for educational simulation. The period r = 260 is preselected; period-finding is classical arithmetic here, not a quantum computation.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             RSA TARGET
+             ================================================== -->
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <h2>RSA Target</h2>
+
+            </div>
+
+
+            <div class="target-grid">
+
+                <div class="target-box">
+
+                    <span class="label">
+                        RSA Modulus
+                    </span>
+
+                    <strong id="rsaModulus">
+                        3233
+                    </strong>
+
+                    <small>
+                        n = p Ã— q
+                    </small>
+
+                </div>
+
+
+                <div class="target-box">
+
+                    <span class="label">
+                        Prime Factor 1
+                    </span>
+
+                    <strong id="factorP">
+                        Unknown
+                    </strong>
+
+                    <small>
+                        Hidden from attacker
+                    </small>
+
+                </div>
+
+
+                <div class="target-box">
+
+                    <span class="label">
+                        Prime Factor 2
+                    </span>
+
+                    <strong id="factorQ">
+                        Unknown
+                    </strong>
+
+                    <small>
+                        Hidden from attacker
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="target-description">
+
+                <strong>Attack Objective:</strong>
+
+                <span>
+                    Factor the RSA modulus n without knowing the
+                    original prime numbers.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             SHOR PARAMETERS
+             ================================================== -->
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <h2>Quantum Period-Finding Parameters</h2>
+
+            </div>
+
+
+            <div class="parameter-grid">
+
+                <div class="parameter-box">
+
+                    <span class="label">
+                        Composite Number (N)
+                    </span>
+
+                    <strong id="quantumN">
+                        3233
+                    </strong>
+
+                </div>
+
+
+                <div class="parameter-box">
+
+                    <span class="label">
+                        Selected Base (a)
+                    </span>
+
+                    <strong id="quantumA">
+                        3
+                    </strong>
+
+                </div>
+
+
+                <div class="parameter-box">
+
+                    <span class="label">
+                        gcd(a, N)
+                    </span>
+
+                    <strong id="gcdResult">
+                        1
+                    </strong>
+
+                </div>
+
+
+                <div class="parameter-box">
+
+                    <span class="label">
+                        Period (r)
+                    </span>
+
+                    <strong id="periodResult">
+                        ?
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <button id="startShorButton">
+                START QUANTUM ATTACK
+            </button>
+
+        </section>
+
+
+        <!-- ==================================================
+             STEP-BY-STEP SHOR SIMULATION
+             ================================================== -->
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    03
+                </span>
+
+                <h2>Shor's Algorithm Execution</h2>
+
+            </div>
+
+
+            <div class="algorithm-step">
+
+                <div class="algorithm-number">
+                    1
+                </div>
+
+                <div class="algorithm-content">
+
+                    <h3>Select a random integer</h3>
+
+                    <p id="step1">
+                        Waiting for quantum attack...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="algorithm-step">
+
+                <div class="algorithm-number">
+                    2
+                </div>
+
+                <div class="algorithm-content">
+
+                    <h3>Check greatest common divisor</h3>
+
+                    <p id="step2">
+                        Waiting for calculation...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="algorithm-step">
+
+                <div class="algorithm-number">
+                    3
+                </div>
+
+                <div class="algorithm-content">
+
+                    <h3>Quantum Period Finding</h3>
+
+                    <p id="step3">
+                        Waiting for period estimation...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="algorithm-step">
+
+                <div class="algorithm-number">
+                    4
+                </div>
+
+                <div class="algorithm-content">
+
+                    <h3>Calculate candidate factors</h3>
+
+                    <p id="step4">
+                        Waiting for period...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="algorithm-step">
+
+                <div class="algorithm-number">
+                    5
+                </div>
+
+                <div class="algorithm-content">
+
+                    <h3>Factorization Result</h3>
+
+                    <p id="step5">
+                        Waiting for factorization...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             PERIOD CALCULATION
+             ================================================== -->
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    04
+                </span>
+
+                <h2>Period-Finding Calculation</h2>
+
+            </div>
+
+
+            <div class="calculation-box">
+
+                <div class="calculation-title">
+                    Modular Exponentiation Sequence
+                </div>
+
+                <div id="periodSequence">
+                    a<sup>x</sup> mod N
+                </div>
+
+            </div>
+
+
+            <div class="calculation-box">
+
+                <div class="calculation-title">
+                    Period Calculation
+                </div>
+
+                <div id="periodCalculation">
+                    r = ?
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             FACTORIZATION
+             ================================================== -->
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    05
+                </span>
+
+                <h2>RSA Factorization</h2>
+
+            </div>
+
+
+            <div class="factorization-box">
+
+                <div class="factor-card">
+
+                    <span>
+                        Discovered Factor
+                    </span>
+
+                    <strong id="discoveredFactor1">
+                        ?
+                    </strong>
+
+                </div>
+
+
+                <div class="factor-symbol">
+                    Ã—
+                </div>
+
+
+                <div class="factor-card">
+
+                    <span>
+                        Discovered Factor
+                    </span>
+
+                    <strong id="discoveredFactor2">
+                        ?
+                    </strong>
+
+                </div>
+
+
+                <div class="factor-symbol">
+                    =
+                </div>
+
+
+                <div class="factor-card">
+
+                    <span>
+                        Composite Number
+                    </span>
+
+                    <strong id="factorizationN">
+                        ?
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="attack-result" id="attackResult">
+
+                Quantum attack has not started.
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             RSA VULNERABILITY DETECTION
+             ================================================== -->
+
+        <section class="card">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    06
+                </span>
+
+                <h2>RSA Vulnerability Detection</h2>
+
+            </div>
+
+
+            <div class="vulnerability-box">
+
+                <div class="vulnerability-item">
+
+                    <span class="vulnerability-label">
+                        RSA Modulus
+                    </span>
+
+                    <strong id="vulnerabilityN">
+                        3233
+                    </strong>
+
+                </div>
+
+
+                <div class="vulnerability-item">
+
+                    <span class="vulnerability-label">
+                        Factorization Status
+                    </span>
+
+                    <strong id="factorizationStatus">
+                        NOT ANALYZED
+                    </strong>
+
+                </div>
+
+
+                <div class="vulnerability-item">
+
+                    <span class="vulnerability-label">
+                        RSA Security Status
+                    </span>
+
+                    <strong id="rsaSecurityStatus">
+                        SECURE
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="detection-message" id="detectionMessage">
+
+                Waiting for quantum attack analysis.
+
+            </div>
+
+
+            <div class="detection-explanation" id="detectionExplanation">
+
+                RSA security relies on the difficulty of factoring
+                the modulus n into its prime factors.
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             THREAT STATUS
+             ================================================== -->
+
+        <section class="status-grid">
+
+            <div class="status-card">
+
+                <span>
+                    ATTACK TYPE
+                </span>
+
+                <strong>
+                    SHOR'S ALGORITHM
+                </strong>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <span>
+                    TARGET
+                </span>
+
+                <strong>
+                    RSA
+                </strong>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <span>
+                    THREAT STATUS
+                </span>
+
+                <strong id="threatStatus">
+                    WAITING
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             NEXT STAGE
+             ================================================== -->
+
+        <div class="next-stage">
+
+            <p>
+                Successful factorization demonstrates the
+                vulnerability of classical RSA to a sufficiently
+                powerful quantum computer.
+            </p>
+
+            <p>
+                The self-healing mechanism will now transition
+                the system toward post-quantum protection.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/quantum.js"></script>
+
+</body>
+
+</html>
